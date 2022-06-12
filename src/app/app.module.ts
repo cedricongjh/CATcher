@@ -29,6 +29,7 @@ import { IssueService } from './core/services/issue.service';
 import { LoggingService } from './core/services/logging.service';
 import { PhaseService } from './core/services/phase.service';
 import { SessionFixConfirmationComponent } from './core/services/session-fix-confirmation/session-fix-confirmation.component';
+import { SuccessHandlingService } from './core/services/success-handling.service';
 import { UserService } from './core/services/user.service';
 import { PhaseBugReportingModule } from './phase-bug-reporting/phase-bug-reporting.module';
 import { PhaseModerationModule } from './phase-moderation/phase-moderation.module';
@@ -65,7 +66,7 @@ import { SharedModule } from './shared/shared.module';
     {
       provide: GithubService,
       useFactory: GithubServiceFactory,
-      deps: [ErrorHandlingService, Apollo, ElectronService, LoggingService]
+      deps: [ErrorHandlingService, Apollo, ElectronService, LoggingService, SuccessHandlingService]
     },
     {
       provide: AuthService,

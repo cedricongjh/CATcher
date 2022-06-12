@@ -6,6 +6,7 @@ import { Issue } from '../../core/models/issue.model';
 import { ErrorHandlingService } from '../../core/services/error-handling.service';
 import { IssueService } from '../../core/services/issue.service';
 import { LabelService } from '../../core/services/label.service';
+import { SuccessHandlingService } from '../../core/services/success-handling.service';
 import { SUBMIT_BUTTON_TEXT } from '../../shared/view-issue/view-issue.component';
 
 @Component({
@@ -22,6 +23,7 @@ export class NewIssueComponent implements OnInit {
     private issueService: IssueService,
     private formBuilder: FormBuilder,
     private errorHandlingService: ErrorHandlingService,
+    private successHandlingService: SuccessHandlingService,
     public labelService: LabelService,
     private router: Router
   ) {}
@@ -53,6 +55,9 @@ export class NewIssueComponent implements OnInit {
         },
         (error) => {
           this.errorHandlingService.handleError(error);
+        },
+        () => {
+          this.successHandlingService.handleSuccess('Successfully submitted new issue');
         }
       );
   }
